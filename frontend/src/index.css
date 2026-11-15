@@ -1,0 +1,103 @@
+:root {
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --border: #e3e6eb;
+  --text: #1c2230;
+  --muted: #6b7385;
+  --primary: #2f5bea;
+  --primary-hover: #2449c4;
+  --danger: #d6363f;
+  --warn-bg: #fff6e0;
+  --warn: #a66a00;
+  --selected: #eef2ff;
+  --radius: 10px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.page { max-width: 1200px; margin: 0 auto; padding: 32px 20px 48px; }
+.header h1 { margin: 0; font-size: 1.75rem; }
+.header p { margin: 4px 0 24px; }
+.muted { color: var(--muted); }
+.strong { font-weight: 600; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.stat { padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+.stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.stat-value { font-size: 1.5rem; font-weight: 700; }
+.stat.warn { background: var(--warn-bg); border-color: #f1d9a0; }
+.stat.warn .stat-value { color: var(--warn); }
+
+.alert {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  background: #fdecee; color: #8a1f26; border: 1px solid #f5c2c7;
+  padding: 10px 14px; border-radius: var(--radius); margin-bottom: 16px;
+}
+
+.layout { display: grid; grid-template-columns: 1fr 340px; gap: 20px; align-items: start; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); background: #fafbfc; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: #fafbfd; }
+tr.selected, tr.selected:hover { background: var(--selected); }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.desc { max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row-actions { white-space: nowrap; text-align: right; }
+.row-actions .btn + .btn { margin-left: 6px; }
+
+.pill { display: inline-block; min-width: 32px; padding: 2px 8px; border-radius: 999px; background: #eaf6ee; color: #1e6b3a; text-align: center; font-weight: 600; }
+.pill.low { background: var(--warn-bg); color: var(--warn); }
+.pill.out { background: #fdecee; color: var(--danger); }
+
+.empty { padding: 40px; text-align: center; color: var(--muted); }
+
+.form { padding: 18px; display: flex; flex-direction: column; gap: 12px; position: sticky; top: 20px; }
+.form h2 { margin: 0 0 4px; font-size: 1.1rem; }
+.form label { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; font-weight: 500; }
+.form input, .form textarea {
+  font: inherit; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; background: #fff;
+}
+.form input:focus, .form textarea:focus { outline: 2px solid var(--primary); outline-offset: -1px; border-color: transparent; }
+/* Number inputs: remove browser spinners so quantity/price boxes align cleanly */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.actions { display: flex; gap: 8px; margin-top: 4px; }
+
+.btn {
+  font: inherit; font-size: 0.9rem; padding: 8px 14px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--border); background: #fff; color: var(--text);
+}
+.btn:hover { background: #f2f4f7; }
+.btn:disabled { opacity: 0.6; cursor: default; }
+.btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+.btn.primary:hover { background: var(--primary-hover); }
+.btn.danger { color: var(--danger); border-color: #f2c4c7; }
+.btn.danger:hover { background: #fdecee; }
+.btn.small { padding: 4px 10px; font-size: 0.8rem; }
+.link { background: none; border: none; color: inherit; text-decoration: underline; cursor: pointer; font: inherit; }
